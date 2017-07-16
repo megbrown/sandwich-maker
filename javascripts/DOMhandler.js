@@ -2,7 +2,6 @@
 let finalSandwichPrice = 0;
 
 let selectedTopping;
-
 let toppingPrice;
 
 let breadChooser = document.getElementById("bread-chooser");
@@ -12,53 +11,46 @@ let condimentsChooser = document.getElementById("condiments-chooser");
 let veggiesChooser = document.getElementById("veggies-chooser");
 let getPriceButton = document.getElementById("get-price");
 
+function getFinalPrice(addIngredient){
+	toppingPrice = addIngredient;
+  finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
+  console.log("final price", finalSandwichPrice);
+}
+
+function printToDom(selectedTopping) {
+	document.getElementById("sandwich-output").innerHTML += `<h4>Item: ${selectedTopping}</h4>`;
+}
 
 breadChooser.addEventListener("change", function(event) {
 	selectedTopping = event.target.value;
   printToDom(selectedTopping);
-  toppingPrice = SandwichMaker.addBread(selectedTopping);
-  finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
-  console.log("final price", finalSandwichPrice);
+  getFinalPrice(SandwichMaker.addBread(selectedTopping));
 });
 
 meatChooser.addEventListener("change", function(event) {
 	selectedTopping = event.target.value;
   printToDom(selectedTopping);
-  toppingPrice = SandwichMaker.addMeat(selectedTopping);
-  finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
-  console.log("final price", finalSandwichPrice);
+  getFinalPrice(SandwichMaker.addMeat(selectedTopping));
 });
 
 cheeseChooser.addEventListener("change", function(event) {
   selectedTopping = event.target.value;
   printToDom(selectedTopping);
-  toppingPrice = SandwichMaker.addCheese(selectedTopping);
-  finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
-  console.log("final price", finalSandwichPrice);
+  getFinalPrice(SandwichMaker.addCheese(selectedTopping));
 });
 
 condimentsChooser.addEventListener("change", function(event) {
   selectedTopping = event.target.value;
   printToDom(selectedTopping);
-  toppingPrice = SandwichMaker.addCondiments(selectedTopping);
-  finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
-  console.log("final price", finalSandwichPrice);
+  getFinalPrice(SandwichMaker.addCondiments(selectedTopping));
 });
 
 veggiesChooser.addEventListener("change", function(event) {
   selectedTopping = event.target.value;
   printToDom(selectedTopping);
-  toppingPrice = SandwichMaker.addVeggies(selectedTopping);
-  finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
-  console.log("final price", finalSandwichPrice);
+  getFinalPrice(SandwichMaker.addVeggies(selectedTopping));
 });
 
 getPriceButton.addEventListener("click", function(event) {
 	document.getElementById("price-output").innerHTML = `<h2>Amount Due: $${finalSandwichPrice.toFixed(2)}</h2>`;
 })
-
-
-
-function printToDom(selectedTopping) {
-	document.getElementById("sandwich-output").innerHTML += `<h4>Item: ${selectedTopping}</h4>`;
-}
