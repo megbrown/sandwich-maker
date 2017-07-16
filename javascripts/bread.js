@@ -19,7 +19,6 @@ var SandwichMaker = (function(maker) {
 		  	} else {
 		  		selectedPrice = 0;
 		  	}
-		  	console.log("selected price", selectedPrice);
 		  	return selectedPrice;
   		};
 

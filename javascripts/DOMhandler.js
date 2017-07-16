@@ -14,7 +14,6 @@ let getPriceButton = document.getElementById("get-price");
 function getFinalPrice(addIngredient){
 	toppingPrice = addIngredient;
   finalSandwichPrice += SandwichMaker.addTopping(toppingPrice);
-  console.log("final price", finalSandwichPrice);
 }
 
 function printToDom(selectedTopping) {
