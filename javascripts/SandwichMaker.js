@@ -1,12 +1,14 @@
-var SandwichMaker = (function() {
+var SandwichMaker = (function(maker) {
 
-  // Private variable to store the price
-  var totalPrice = 0;
+ let totalPrice = 0;
 
-  // Return the public interface that other code can interact with
-  return {
-    addTopping: function(toppingPrice) {
+ 	maker.addTopping = function(toppingPrice) {
+ 			totalPrice = 0;
       totalPrice += toppingPrice;
-    }
+      console.log("category price", totalPrice);
+      return totalPrice;
   };
-})();
+
+  return maker;
+
+}(SandwichMaker || {}));
